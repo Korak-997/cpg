@@ -25,3 +25,12 @@ body{
   padding: 0;
   box-sizing: border-box;
 }
+
+// wraper styles 
+
+.wraper{
+  width: 97%;
+  margin: .8em auto;
+  box-shadow: $shadow;
+  padding: 1em;
+}
