@@ -34,7 +34,7 @@ nav {
   border-radius: 0 30% 10% 20%;
   box-shadow: $shadow;
   img {
-    width: 3rem;
+    width: 2rem;
     &:hover {
       cursor: pointer;
     }
@@ -42,7 +42,11 @@ nav {
   ul{
     list-style: none;
     margin: .4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     li{
+      margin-left: .5em;
       a{
         text-decoration: none;
         color: $white;
