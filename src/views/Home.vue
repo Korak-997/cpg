@@ -2,7 +2,7 @@
 	<div id="home" class="wraper">
 		<div class="main">
 			<div v-show="colors.length > 0" class="colors"></div>
-			<div @mouseover.self="changeBg($event)" id="canva">
+			<div @mousemove="changeBg($event)" id="canva">
 				<p>1) Move Your mouse around to generate colors.</p>
 				<p>2) Click to save the color to your pallete.</p>
 			</div>
