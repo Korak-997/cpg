@@ -23,11 +23,17 @@ export default {
 			bottomMiddle : [0, 255, 0], //green
 			bottomRight : [255, 0, 0], //red
 			bottomLeft : [0, 0, 255], //blue
-			leftMiddle : this.average(this.bottomRight, this.bottomLeft),
-			rightMiddle : this.average(this.topRight, this.bottomRight),
-			center : this.average(this.rightMiddle, this.leftMiddle),
-			topMiddle : this.average(this.topRight, this.topLeft),
+			leftMiddle : "" ,
+			rightMiddle: "" ,
+			center: "" ,
+			topMiddle: ""
 		};
+	},
+	created(){
+		this.leftMiddle = this.average(this.bottomRight, this.bottomLeft)
+		this.rightMiddle= this.average(this.topRight, this.bottomRight)
+		this.center= this.average(this.rightMiddle, this.leftMiddle)
+		this.topMiddle= this.average(this.topRight, this.topLeft)
 	},
 	methods: {
 		// calculates average of the given colors based on  Bilinear interpolation
