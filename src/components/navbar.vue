@@ -30,11 +30,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .5em;
+  padding: .2em;
   border-radius: 0 30% 10% 20%;
   box-shadow: $shadow;
   img {
-    width: 2rem;
+    width: 1.3rem;
     &:hover {
       cursor: pointer;
     }

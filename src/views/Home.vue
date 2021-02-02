@@ -104,16 +104,16 @@ export default {
 <style scoped lang="scss">
 .main {
 	width: 100%;
-	height: 80vh;
+	height: 95%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	#canva {
-		width: 98%;
+		width: 100%;
 		text-align: center;
-		height: 80vh;
+		height: 100%;
 		&:hover {
-			cursor: pointer;
+			cursor: crosshair;
 		}
 		p {
 			color: $grey;
@@ -122,6 +122,7 @@ export default {
 }
 .controls {
 	width: 60%;
-	margin: 0.3em auto;
+	height: 5%;
+	margin: auto;
 }
 </style>
