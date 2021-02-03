@@ -34,7 +34,7 @@ nav {
   border-radius: 0 30% 10% 20%;
   box-shadow: $shadow;
   img {
-    width: 1.3rem;
+    width: 1.5rem;
     &:hover {
       cursor: pointer;
     }

@@ -110,10 +110,10 @@ export default {
 <style scoped lang="scss">
 .main {
 	width: 100%;
-	height: 95%;
+	height: 92%;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	#canva {
 		width: 100%;
 		text-align: center;
@@ -123,12 +123,29 @@ export default {
 		}
 		p {
 			color: $grey;
+			font-size: 3rem;
 		}
 	}
 }
-.controls {
-	width: 60%;
-	height: 5%;
+.footer {
+	width: 100%;
+	height: 8%;
 	margin: auto;
+	display: flex;
+	#pallete{
+		width: 69%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		div{
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+	.controls{
+		width: 30%;
+		box-shadow: $shadow;
+	}
 }
+
 </style>
