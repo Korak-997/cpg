@@ -41,6 +41,13 @@ export default {
 		this.center= this.average(this.rightMiddle, this.leftMiddle)
 		this.topMiddle= this.average(this.topRight, this.topLeft)
 	},
+	updated(){
+		document.querySelectorAll('.color-div').forEach((div)=>{
+			div.style.backgroundColor = `rgb(${div.innerText})`
+			div.innerHTML = ""
+		});
+
+	},
 	methods: {
 		// calculates average of the given colors based on  Bilinear interpolation
 		average(a, b) {
@@ -62,6 +69,12 @@ export default {
 				);
 			}
 			return result;
+		},
+		addColor(){
+			this.colors.push(this.rgb.join(","))
+			console.log("i worked")
+			console.log(this.colors)
+
 		},
 		changeBg(e) {
 			const canva = document.getElementById("canva");
