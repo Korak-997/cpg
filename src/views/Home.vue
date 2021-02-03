@@ -1,13 +1,19 @@
 <template>
 	<div id="home" class="wraper">
 		<div class="main">
-			<div v-show="colors.length > 0" class="colors"></div>
-			<div @mousemove="changeBg($event)" id="canva">
+			<div @click="addColor()" @mousemove="changeBg($event)" id="canva">
 				<p>1) Move Your mouse around to generate colors.</p>
 				<p>2) Click to save the color to your pallete.</p>
 			</div>
 		</div>
-		<div class="controls">Controls will be here</div>
+		<div class="footer">
+			<div class="controls">
+				<button>Save</button>
+			</div>
+			<div v-show="colors.length > 0" id="pallete">
+					<div v-for="color in colors" :key="color" class="color-div">{{color}}</div>
+			</div>
+		</div>
 	</div>
 </template>
 
