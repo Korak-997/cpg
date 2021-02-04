@@ -1,7 +1,7 @@
 <template>
 	<div id="home" class="wraper">
 		<div class="main">
-			<div @click="addColor()" @mousemove="changeBg($event)" id="canva">
+			<div @keydown.enter="generateColor()" @click="changeOpacity($event)" id="canva">
 				<p>1) Move Your mouse around to generate colors.</p>
 				<p>2) Click to save the color to your pallete.</p>
 			</div>
@@ -26,22 +26,11 @@ export default {
 		return {
 			colors: [],
 			rgb: "",
-			topRight: [255, 255, 255], //white
-			topLeft: [0, 0, 0], //black
-			bottomMiddle: [0, 255, 0], //green
-			bottomRight: [255, 0, 0], //red
-			bottomLeft: [0, 0, 255], //blue
-			leftMiddle: "",
-			rightMiddle: "",
-			center: "",
-			topMiddle: "",
+			right: [255, 255, 255], //white
+			left: [0, 0, 0], //black
 		};
 	},
 	created() {
-		this.leftMiddle = this.average(this.bottomRight, this.bottomLeft);
-		this.rightMiddle = this.average(this.topRight, this.bottomRight);
-		this.center = this.average(this.rightMiddle, this.leftMiddle);
-		this.topMiddle = this.average(this.topRight, this.topLeft);
 	},
 	updated() {
 		document.querySelectorAll(".color-div").forEach((div) => {
@@ -51,76 +40,22 @@ export default {
 	},
 	methods: {
 		// calculates average of the given colors based on  Bilinear interpolation
-		average(a, b) {
-			return [0.5 * (a[0] + b[0]), 0.5 * (a[1] + b[1]), 0.5 * (a[1] + b[1])];
-		},
-		interpolate2D(x00, x01, x10, x11, x, y) {
-			return (
-				x00 * (1 - x) * (1 - y) +
-				x10 * x * (1 - y) +
-				x01 * (1 - x) * y +
-				x11 * x * y
-			);
-		},
-		interpolateArray(x00, x01, x10, x11, x, y) {
-			var result = [0, 0, 0];
-			for (var i = 0; i < 3; ++i) {
-				result[i] = Math.floor(
-					this.interpolate2D(x00[i], x01[i], x10[i], x11[i], x, y)
-				);
-			}
-			return result;
-		},
 		addColor() {
 			this.colors.push(this.rgb.join(","));
 			console.log("i worked");
 			console.log(this.colors);
 		},
-		changeBg(e) {
+		generateColor(){
+			document.getElementById('canva').style.backgroundColor=`#${Math.floor(Math.random()*16777215).toString(16)}`
+		},
+		changeOpacity(e) {
 			const canva = document.getElementById("canva");
 			var positionX = e.pageX / canva.clientWidth;
 			var positionY = e.pageY / canva.clientHeight;
-			var x00, x01, x11, x10;
-			if (positionX > 0.5 && positionY > 0.5) {
-				x00 = this.center;
-				x01 = this.bottomMiddle;
-				x10 = this.rightMiddle;
-				x11 = this.bottomRight;
-				positionX = 2.0 * (positionX - 0.5); // scale position back to [0, 1]
-				positionY = 2.0 * (positionY - 0.5);
-			} else if (positionX > 0.5 && positionY <= 0.5) {
-				x00 = this.topMiddle;
-				x01 = this.center;
-				x10 = this.topRight;
-				x11 = this.rightMiddle;
-				positionX = 2.0 * (positionX - 0.5);
-				positionY = 2.0 * positionY;
-			} else if (positionX <= 0.5 && positionY <= 0.5) {
-				x00 = this.topLeft;
-				x01 = this.leftMiddle;
-				x10 = this.topMiddle;
-				x11 = this.center;
-				positionX = 2.0 * positionX;
-				positionY = 2.0 * positionY;
-			} else if (positionX <= 0.5 && positionY > 0.5) {
-				x00 = this.leftMiddle;
-				x01 = this.bottomLeft;
-				x10 = this.center;
-				x11 = this.bottomMiddle;
-				positionX = 2.0 * positionX;
-				positionY = 2.0 * (positionY - 0.5);
-			} else {
-				// can't happen
-			}
-			this.rgb = this.interpolateArray(
-				x00,
-				x01,
-				x10,
-				x11,
-				positionX,
-				positionY
-			);
-			canva.style.backgroundColor = `rgb(${this.rgb.join(",")})`;
+			console.log(`
+				X: ${positionX}
+				Y: ${positionY}
+			`)
 		},
 	},
 };
