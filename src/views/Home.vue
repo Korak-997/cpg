@@ -11,7 +11,9 @@
 				<button>Save</button>
 			</div>
 			<div v-show="colors.length > 0" id="pallete">
-					<div v-for="color in colors" :key="color" class="color-div">{{color}}</div>
+				<div v-for="color in colors" :key="color" class="color-div">
+					{{ color }}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -24,29 +26,28 @@ export default {
 		return {
 			colors: [],
 			rgb: "",
-			topRight : [255, 255, 255], //white
-			topLeft : [0, 0, 0], //black
-			bottomMiddle : [0, 255, 0], //green
-			bottomRight : [255, 0, 0], //red
-			bottomLeft : [0, 0, 255], //blue
-			leftMiddle : "" ,
-			rightMiddle: "" ,
-			center: "" ,
-			topMiddle: ""
+			topRight: [255, 255, 255], //white
+			topLeft: [0, 0, 0], //black
+			bottomMiddle: [0, 255, 0], //green
+			bottomRight: [255, 0, 0], //red
+			bottomLeft: [0, 0, 255], //blue
+			leftMiddle: "",
+			rightMiddle: "",
+			center: "",
+			topMiddle: "",
 		};
 	},
-	created(){
-		this.leftMiddle = this.average(this.bottomRight, this.bottomLeft)
-		this.rightMiddle= this.average(this.topRight, this.bottomRight)
-		this.center= this.average(this.rightMiddle, this.leftMiddle)
-		this.topMiddle= this.average(this.topRight, this.topLeft)
+	created() {
+		this.leftMiddle = this.average(this.bottomRight, this.bottomLeft);
+		this.rightMiddle = this.average(this.topRight, this.bottomRight);
+		this.center = this.average(this.rightMiddle, this.leftMiddle);
+		this.topMiddle = this.average(this.topRight, this.topLeft);
 	},
-	updated(){
-		document.querySelectorAll('.color-div').forEach((div)=>{
-			div.style.backgroundColor = `rgb(${div.innerText})`
-			div.innerHTML = ""
+	updated() {
+		document.querySelectorAll(".color-div").forEach((div) => {
+			div.style.backgroundColor = `rgb(${div.innerText})`;
+			div.innerHTML = "";
 		});
-
 	},
 	methods: {
 		// calculates average of the given colors based on  Bilinear interpolation
@@ -70,11 +71,10 @@ export default {
 			}
 			return result;
 		},
-		addColor(){
-			this.colors.push(this.rgb.join(","))
-			console.log("i worked")
-			console.log(this.colors)
-
+		addColor() {
+			this.colors.push(this.rgb.join(","));
+			console.log("i worked");
+			console.log(this.colors);
 		},
 		changeBg(e) {
 			const canva = document.getElementById("canva");
@@ -151,20 +151,19 @@ export default {
 	height: 8%;
 	margin: auto;
 	display: flex;
-	#pallete{
+	#pallete {
 		width: 69%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		div{
+		div {
 			width: 3rem;
 			height: 3rem;
 		}
 	}
-	.controls{
+	.controls {
 		width: 30%;
 		box-shadow: $shadow;
 	}
 }
-
 </style>

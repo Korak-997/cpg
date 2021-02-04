@@ -1,15 +1,13 @@
 <template>
-  <div id="dashboard">
-    <h1>This is an Dashboard page</h1>
-  </div>
+	<div id="dashboard">
+		<h1>This is an Dashboard page</h1>
+	</div>
 </template>
 
 <script>
 export default {
-  name: "Dashboard",
+	name: "Dashboard",
 };
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>
