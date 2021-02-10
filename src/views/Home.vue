@@ -1,9 +1,10 @@
 <template>
 	<div id="home" class="wraper">
 		<div class="main">
-			<div @keydown.enter="generateColor()" @click="changeOpacity($event)" id="canva">
-				<p>1) Move Your mouse around to generate colors.</p>
-				<p>2) Click to save the color to your pallete.</p>
+			<div
+				@click="darkenColor()"
+				id="canva"
+			>
 			</div>
 		</div>
 		<div class="footer">
@@ -25,12 +26,11 @@ export default {
 	data() {
 		return {
 			colors: [],
-			rgb: "",
+			rgbColor: "",
+			hexColor: "",
 			right: [255, 255, 255], //white
 			left: [0, 0, 0], //black
 		};
-	},
-	created() {
 	},
 	updated() {
 		document.querySelectorAll(".color-div").forEach((div) => {
@@ -39,14 +39,34 @@ export default {
 		});
 	},
 	methods: {
-		// calculates average of the given colors based on  Bilinear interpolation
 		addColor() {
 			this.colors.push(this.rgb.join(","));
 			console.log("i worked");
 			console.log(this.colors);
 		},
-		generateColor(){
-			document.getElementById('canva').style.backgroundColor=`#${Math.floor(Math.random()*16777215).toString(16)}`
+		darkenColor(){
+			let color = this.convertHexToRgb("ff33dd")
+			color.each(i =>{
+				num = parseInt(i, 10)
+				while (num != 0){
+					num = num - 10
+				}
+			})
+			console.log(color)
+		},
+		convertHexToRgb(hexString){
+			const arr = hexString.split("")
+			const r = [`${arr[1]}`, `${arr[2]}`].join('')
+			const g = [`${arr[3]}`, `${arr[4]}`].join('')
+			const b = [`${arr[5]}`, `${arr[6]}`].join('')
+			return [`${parseInt(r, 16)}`, `${parseInt(g, 16)}`, `${parseInt(b, 16)})`]
+		},
+		addRanBg() {
+			this.hexColor = `#${Math.floor(
+				Math.random() * 16777215
+			).toString(16)}`
+
+			document.getElementById("canva").style.backgroundColor = this.hexColor;
 		},
 		changeOpacity(e) {
 			const canva = document.getElementById("canva");
@@ -55,7 +75,7 @@ export default {
 			console.log(`
 				X: ${positionX}
 				Y: ${positionY}
-			`)
+			`);
 		},
 	},
 };
