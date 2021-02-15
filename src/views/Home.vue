@@ -163,6 +163,21 @@ export default {
   .controls {
     width: 30%;
     box-shadow: $shadow;
+    button{
+      width: 30%;
+      font-size: 1.3rem;
+      color: $white;
+      background-color: $dark-blue;
+      border: none;
+      margin: .5em;
+      padding: .4em;
+      &:hover{
+        border: 2px solid $dark-blue;
+        color: $dark-blue;
+        background-color: transparent;
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
