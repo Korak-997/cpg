@@ -60,6 +60,7 @@ export default {
       this.welcomeMessage = false
     },
     savePallete() {
+      localStorage.setItem("colors", JSON.stringify(this.colors))
       this.info = "";
       this.colors = [];
       document.getElementById("addColorBtn").disabled = false;
