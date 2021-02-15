@@ -1,5 +1,14 @@
 <template>
   <div id="home" class="wraper">
+    <div v-show="welcomeMessage" id="wlcMessage">
+      <h3>Welcome to CPG</h3>
+      <p>In order to be able to save the palletes you generate.</p>
+      <p>We need you to allow using your Browser storage.</p>
+      <p>After you push Save Pallete button.</p>
+      <p>In a small window you will be asked to allow storage usage.</p>
+      <p>Please click allow otherwise you will not be able to save your palletes.</p>
+      <button @click="closeMessage()">OK</button>
+    </div>
     <div class="main">
       <p id="info" v-show="info">{{ info }}</p>
       <div @click="generateRandomBg()" id="canva"></div>
@@ -25,10 +34,11 @@ export default {
     return {
       colors: [],
       rgbColor: "",
+      welcomeMessage: true,
       hexColor: "",
       right: [255, 255, 255], //white
       left: [0, 0, 0], //black
-      info: "",
+      info: ""
     };
   },
   updated() {
@@ -45,6 +55,9 @@ export default {
   methods: {
     addColor() {
       this.colors.push(this.hexColor);
+    },
+    closeMessage(){
+      this.welcomeMessage = false
     },
     savePallete() {
       this.info = "";
@@ -72,6 +85,33 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#wlcMessage{
+  background-color: $dark-blue;
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  z-index: 3;
+  text-align: center;
+  padding: 10rem;
+  color: $white;
+  font-size: 2rem;
+  font-family: 'ubuntu';
+  button{
+    width: 50%;
+    font-size: 2rem;
+    margin-top: 2rem;
+    background-color: $white;
+    border: none;
+    color: $dark-blue;
+    &:hover{
+      cursor:pointer;
+      background-color: transparent;
+      border: 2px solid $white;
+      color: $white;
+    }
+
+  }
+}
 .main {
   width: 100%;
   height: 92%;
