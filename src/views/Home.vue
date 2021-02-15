@@ -51,16 +51,6 @@ export default {
       this.colors = [];
       document.getElementById("addColorBtn").disabled = false;
     },
-    darkenColor() {
-      let color = this.convertHexToRgb("ff33dd");
-      color.each((i) => {
-        let num = parseInt(i, 10);
-        while (num != 0) {
-          num = num - 10;
-        }
-      });
-      console.log(color);
-    },
     convertHexToRgb(hexString) {
       const arr = hexString.split("");
       const r = [`${arr[1]}`, `${arr[2]}`].join("");
@@ -69,24 +59,15 @@ export default {
       return [
         `${parseInt(r, 16)}`,
         `${parseInt(g, 16)}`,
-        `${parseInt(b, 16)})`,
+        `${parseInt(b, 16)}`
       ];
     },
     generateRandomBg() {
       this.hexColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
       document.getElementById("canva").style.backgroundColor = this.hexColor;
-    },
-    changeOpacity(e) {
-      const canva = document.getElementById("canva");
-      var positionX = e.pageX / canva.clientWidth;
-      var positionY = e.pageY / canva.clientHeight;
-      console.log(`
-				X: ${positionX}
-				Y: ${positionY}
-			`);
-    },
-  },
+    }
+  }
 };
 </script>
 
