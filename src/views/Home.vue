@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { uuid } from "vue-uuid";
 export default {
   name: "Home",
   data() {
@@ -54,7 +55,8 @@ export default {
   },
   methods: {
     addColor() {
-      this.colors.push(this.hexColor);
+      // this.colors.push(this.hexColor);
+      console.log(this.id)
     },
     closeMessage(){
       this.welcomeMessage = false
