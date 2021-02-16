@@ -178,18 +178,19 @@ export default {
     width: 30%;
     box-shadow: $shadow;
     button{
-      width: 30%;
-      font-size: 1.3rem;
+      width: fit-content;
+      font-size: 1.1rem;
       color: $white;
       background-color: $dark-blue;
       border: none;
-      margin: .5em;
-      padding: .4em;
+      margin: .3em;
       &:hover{
-        border: 2px solid $dark-blue;
-        color: $dark-blue;
-        background-color: transparent;
         cursor: pointer;
+        box-shadow: $shadow;
+      }
+      img{
+        width: 2rem;
+        height: auto;
       }
     }
   }
