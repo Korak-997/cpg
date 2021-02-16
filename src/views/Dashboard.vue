@@ -1,14 +1,19 @@
 <template>
   <div id="dashboard" class="wraper">
     <h1>Welcome to your Dashboard</h1>
-    <div v-for="pallete in palletes" :key="pallete" class="palletes">
+    <div v-show="palletes.length == 0" id="info">
+      <h1>You do not have any saved palletes.</h1>
+      <h1>Go to Home Page and Save a pallete or more. </h1>
+      <h1>Then you can see all your palletes here.</h1>
+    </div>
+    <div v-show="palletes.length > 0" v-for="pallete in palletes" :key="pallete" class="palletes">
       <div class="colors">
         <p v-for="color in pallete.colors" :key="color" class="color" >
           <span>{{color}}</span>
         </p>
       </div>
       <div class="controls">
-        <button>
+        <button @click="removePallete(pallete.id)">
           <img src="../assets/delete.png" alt="delete">
         </button>
       </div>
@@ -32,6 +37,19 @@ export default {
         x.childNodes[0].style.display = "none"
       })
     })
+  },
+  methods:{
+    removePallete(id) {
+      let index = 0
+      this.palletes.forEach((pallete)=>{
+        if (pallete.id == id) {
+          index = this.palletes.indexOf(pallete);
+        }
+      })
+      alert('You really want to Delete your Pallete ?')
+      this.palletes.splice(index, 1);
+      localStorage.setItem("palletes", JSON.stringify(this.palletes));
+    }
   }
 };
 </script>
@@ -41,6 +59,12 @@ export default {
   text-align: center;
   h1{
     color:$dark-blue;
+  }
+  #info{
+    width: 70%;
+    box-shadow: $shadow;
+    margin: 2rem auto;
+    padding: 1rem;
   }
   .palletes{
     box-shadow: $shadow;
