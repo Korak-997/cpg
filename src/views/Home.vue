@@ -28,18 +28,18 @@
 </template>
 
 <script>
-import { uuid } from "vue-uuid";
 export default {
   name: "Home",
   data() {
     return {
       colors: [],
       rgbColor: "",
-      welcomeMessage: true,
+      welcomeMessage: false,
       hexColor: "",
       right: [255, 255, 255], //white
       left: [0, 0, 0], //black
-      info: ""
+      info: "",
+      pallete: []
     };
   },
   updated() {
@@ -55,16 +55,21 @@ export default {
   },
   methods: {
     addColor() {
-      // this.colors.push(this.hexColor);
-      console.log(this.id)
+      this.colors.push(this.hexColor);
     },
     closeMessage(){
       this.welcomeMessage = false
     },
     savePallete() {
-      localStorage.setItem("colors", JSON.stringify(this.colors))
+      let id = Math.floor(Math.random() * 16777215).toString(16)
+      this.pallete.push( {
+        id: id,
+        colors: this.colors
+      }) 
+      localStorage.setItem("palletes", JSON.stringify(this.pallete))
       this.info = "";
       this.colors = [];
+      id = ""
       document.getElementById("addColorBtn").disabled = false;
     },
     convertHexToRgb(hexString) {
@@ -82,7 +87,7 @@ export default {
       this.hexColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
       document.getElementById("canva").style.backgroundColor = this.hexColor;
-    }
+    },
   }
 };
 </script>
