@@ -167,6 +167,8 @@ export default {
       width: 5rem;
       height: 3rem;
       margin: 0.2em;
+      box-shadow:$shadow;
+      border: 2px solid $light-blue;
       p {
         display: none;
       }
