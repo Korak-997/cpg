@@ -15,8 +15,12 @@
     </div>
     <div class="footer">
       <div class="controls">
-        <button @click="savePallete">Save Pallete</button>
-        <button id="addColorBtn" @click="addColor()">Add Color</button>
+        <button @click="savePallete">
+          <img src="../assets/save.png" alt="save pallete">
+        </button>
+        <button id="addColorBtn" @click="addColor()">
+          <img src="../assets/add.png" alt="Add Color">
+        </button>
       </div>
       <div v-show="colors.length > 0" id="pallete">
         <div v-for="color in colors" :key="color" class="color-div">
