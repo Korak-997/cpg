@@ -8,7 +8,9 @@
         </p>
       </div>
       <div class="controls">
-        <p>Here goes controlers</p>
+        <button>
+          <img src="../assets/delete.png" alt="delete">
+        </button>
       </div>
     </div>
   </div>
@@ -41,12 +43,28 @@ export default {
     color:$dark-blue;
   }
   .palletes{
-    border: 2px solid red;
+    box-shadow: $shadow;
+    margin: 2rem;
+    padding: .5em;
     .controls{
-      border: 2px solid blue;
+      margin: 1rem;
+      height: fit-content;
+      button{
+        background-color: $dark-blue;
+        color: $white;
+        border: none;
+        padding: .2em;
+        &:hover{
+          box-shadow: $shadow;
+          cursor: pointer;
+        }
+        img{
+          width: 1.5rem;
+          height: auto;
+        }
+      }
     }
     .colors{
-      border: 2px solid green;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
