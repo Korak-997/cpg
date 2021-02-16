@@ -75,6 +75,7 @@ export default {
       this.colors = [];
       id = ""
       document.getElementById("addColorBtn").disabled = false;
+      alert('Your pallete is Saved :)')
     },
     convertHexToRgb(hexString) {
       const arr = hexString.split("");
