@@ -1,32 +1,25 @@
 <template>
 	<div id="home" class="wraper">
-		<div v-show="welcomeMessage" id="wlcMessage">
-			<h3>Welcome to CPG</h3>
-			<p>In order to be able to save the palletes you generate.</p>
-			<p>We need you to allow using your Browser storage.</p>
-			<p>After you push Save Pallete button.</p>
-			<p>In a small window you will be asked to allow storage usage.</p>
-			<p>
-				Please click allow otherwise you will not be able to save your palletes.
-			</p>
-			<button @click="closeMessage()">OK</button>
-		</div>
 		<div class="main">
 			<p id="info" v-show="info">{{ info }}</p>
 			<div @click="generateRandomBg()" id="canva"></div>
 		</div>
 		<div class="footer">
 			<div class="controls">
-				<button class = "btn" @click="savePallete">
-					<img src="../assets/save.png" alt="save pallete" />
+				<button title="Save current pallete" class="btn" @click="savePallete">
+					SAVE
 				</button>
-				<button class = "btn" id="addColorBtn" @click="addColor()">
-					<img src="../assets/add.png" alt="Add Color" />
+				<button title="Add current color to your pallete" class="btn" id="addColorBtn" @click="addColor()">
+					ADD
 				</button>
 				<div id="darkness">
-					<button class="colorBtn" @click="lightenColor()" title= "Make Lighter">+</button>
+					<button class="colorBtn" @click="lightenColor()" title="Make Lighter">
+						+
+					</button>
 					<p>{{ num }}</p>
-					<button class="colorBtn" @click="darkenColor()" title= "Make Darker">-</button>
+					<button class="colorBtn" @click="darkenColor()" title="Make Darker">
+						-
+					</button>
 				</div>
 			</div>
 			<div v-show="colors.length > 0" id="pallete">
@@ -45,10 +38,7 @@ export default {
 		return {
 			colors: [],
 			rgbColor: "",
-			welcomeMessage: false,
 			hexColor: "",
-			right: [255, 255, 255], //white
-			left: [0, 0, 0], //black
 			info: "",
 			pallete: [],
 			num: 0,
@@ -60,8 +50,8 @@ export default {
 		});
 		if (this.colors.length == 15) {
 			document.getElementById("addColorBtn").disabled = true;
-			this.info = `You have 15 colors, 
-				Please save your pallet. 
+			this.info = `You have 15 colors,
+				Please save your pallet.
 				Then you will be able to add new Colors`;
 		}
 	},
@@ -90,22 +80,19 @@ export default {
 				B.toString(16).length == 1 ? "0" + B.toString(16) : B.toString(16);
 
 			this.hexColor = `#${RR}${GG}${BB}`;
-      document.getElementById("canva").style.backgroundColor = this.hexColor;
+			document.getElementById("canva").style.backgroundColor = this.hexColor;
 		},
-    darkenColor(){
-      if(this.num != -10){
-        this.num -= 1
-        this.shadeColor(this.hexColor, this.num)
-      }
-    },
-    lightenColor(){
-      if(this.num != 10){
-        this.num += 1
-        this.shadeColor(this.hexColor, this.num)
-      }
-    },
-		closeMessage() {
-			this.welcomeMessage = false;
+		darkenColor() {
+			if (this.num != -10) {
+				this.num -= 1;
+				this.shadeColor(this.hexColor, this.num);
+			}
+		},
+		lightenColor() {
+			if (this.num != 10) {
+				this.num += 1;
+				this.shadeColor(this.hexColor, this.num);
+			}
 		},
 		savePallete() {
 			let id = Math.floor(Math.random() * 16777215).toString(16);
@@ -137,32 +124,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#wlcMessage {
-	background-color: $dark-blue;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	z-index: 3;
-	text-align: center;
-	padding: 10rem;
-	color: $white;
-	font-size: 2rem;
-	font-family: "ubuntu";
-	button {
-		width: 50%;
-		font-size: 2rem;
-		margin-top: 2rem;
-		background-color: $white;
-		border: none;
-		color: $dark-blue;
-		&:hover {
-			cursor: pointer;
-			background-color: transparent;
-			border: 2px solid $white;
-			color: $white;
-		}
-	}
-}
 .main {
 	width: 100%;
 	height: 92%;
@@ -205,19 +166,19 @@ export default {
 		div {
 			width: 5rem;
 			height: 3rem;
-			margin: 0.2em;
+			margin: .5em;
 			box-shadow: $shadow;
-			border: 2px solid $light-blue;
 			p {
 				display: none;
 			}
 		}
 	}
 	.controls {
+		border-radius: 2em 0;
 		width: 30%;
 		box-shadow: $shadow;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
 		.btn {
 			width: fit-content;
@@ -226,13 +187,14 @@ export default {
 			background-color: $dark-blue;
 			border: none;
 			margin: 0.3em;
+			padding: .7em;
+			border-radius: 2em 0;
 			&:hover {
 				cursor: pointer;
 				box-shadow: $shadow;
 			}
-			img {
-				width: 2rem;
-				height: auto;
+			&:disabled{
+				display: none;
 			}
 		}
 		#darkness {
@@ -241,24 +203,24 @@ export default {
 			justify-content: space-around;
 			align-items: center;
 			box-shadow: $shadow;
-			border-radius: 2em;
+			border-radius: 2em 0;
 			p {
 				font-size: 1.8rem;
 				color: $dark-blue;
 				font-weight: bolder;
-				padding: 0.3em;
+				padding: .4em;
 			}
 			.colorBtn {
-        font-size: 1.8rem;
+				font-size: 1.8rem;
 				color: $dark-blue;
 				font-weight: bolder;
-				padding: 0.3em;
-        border: none;
+				padding: .3em;
+				border: none;
 				&:hover {
 					cursor: pointer;
 					background-color: $dark-blue;
 					color: $white;
-					border-radius: 50%;
+					border-radius: 2em 0;
 				}
 			}
 		}
