@@ -9,7 +9,12 @@
 				<button title="Save current pallete" class="btn" @click="savePallete">
 					SAVE
 				</button>
-				<button title="Add current color to your pallete" class="btn" id="addColorBtn" @click="addColor()">
+				<button
+					title="Add current color to your pallete"
+					class="btn"
+					id="addColorBtn"
+					@click="addColor()"
+				>
 					ADD
 				</button>
 				<div id="darkness">
@@ -126,7 +131,7 @@ export default {
 <style scoped lang="scss">
 .main {
 	width: 100%;
-	height: 92%;
+	height: 80%;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -155,27 +160,47 @@ export default {
 }
 .footer {
 	width: 100%;
-	height: 8%;
+	height: 18%;
 	margin: auto;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	#pallete {
 		width: 69%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		height: 100%;
 		div {
-			width: 5rem;
-			height: 3rem;
-			margin: .5em;
+			width: 6rem;
+			height: 90%;
+			margin: 0.5em;
 			box-shadow: $shadow;
+			text-align: center;
 			p {
-				display: none;
+				font-size: 1.2rem;
+				color: $white;
+				font-family: 'ubuntu';
+				text-shadow: 1px 1px 1px #000, 3px 3px 5px black;
 			}
+		img{
+			width: 50%;
+			padding: .7em;
+			margin: .5em auto;
+			border-radius: 50%;
+			box-shadow: 1px 1px 1px #000, 3px 3px 5px black;
+			background-color: #00000080;
+			&:hover{
+				cursor:pointer;
+				transform:rotate(45deg);
+			}
+		}
 		}
 	}
 	.controls {
 		border-radius: 2em 0;
 		width: 30%;
+		height: 70%;
 		box-shadow: $shadow;
 		display: flex;
 		justify-content: space-between;
@@ -187,13 +212,13 @@ export default {
 			background-color: $dark-blue;
 			border: none;
 			margin: 0.3em;
-			padding: .7em;
+			padding: 0.7em;
 			border-radius: 2em 0;
 			&:hover {
 				cursor: pointer;
 				box-shadow: $shadow;
 			}
-			&:disabled{
+			&:disabled {
 				display: none;
 			}
 		}
@@ -208,13 +233,13 @@ export default {
 				font-size: 1.8rem;
 				color: $dark-blue;
 				font-weight: bolder;
-				padding: .4em;
+				padding: 0.4em;
 			}
 			.colorBtn {
 				font-size: 1.8rem;
 				color: $dark-blue;
 				font-weight: bolder;
-				padding: .3em;
+				padding: 0.3em;
 				border: none;
 				&:hover {
 					cursor: pointer;
