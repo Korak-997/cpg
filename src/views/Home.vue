@@ -124,6 +124,7 @@ export default {
 			return [`${parseInt(r, 16)}`, `${parseInt(g, 16)}`, `${parseInt(b, 16)}`];
 		},
 		generateRandomBg() {
+			this.num = 0;
 			this.hexColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 
 			document.getElementById("canva").style.backgroundColor = this.hexColor;
