@@ -34,7 +34,6 @@ export default {
     this.$nextTick(() => {
       document.querySelectorAll(".color").forEach((x) =>{
         x.style.background = `${x.childNodes[0].innerText}`
-        x.childNodes[0].style.display = "none"
       })
     })
   },
