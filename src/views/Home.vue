@@ -30,6 +30,7 @@
 			<div v-show="colors.length > 0" id="pallete">
 				<div v-for="color in colors" :key="color" class="color-div">
 					<p>{{ color }}</p>
+					<img @click='removeColor(color)' src="../assets/delete.png" alt="delete">
 				</div>
 			</div>
 		</div>
@@ -63,6 +64,9 @@ export default {
 	methods: {
 		addColor() {
 			this.colors.push(this.hexColor);
+		},
+		removeColor(color){
+			this.colors = this.colors.filter(c => c !== color)
 		},
 		shadeColor(color, percent) {
 			var R = parseInt(color.substring(1, 3), 16);
