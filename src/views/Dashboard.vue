@@ -34,7 +34,6 @@ export default {
     this.$nextTick(() => {
       document.querySelectorAll(".color").forEach((x) =>{
         x.style.background = `${x.childNodes[0].innerText}`
-        x.childNodes[0].style.display = "none"
       })
     })
   },
@@ -57,6 +56,9 @@ export default {
 <style scoped lang="scss">
 #dashboard{
   text-align: center;
+  height: fit-content !important;
+  padding: 1.8em;
+  width: 90%;
   h1{
     color:$dark-blue;
   }
@@ -68,7 +70,7 @@ export default {
   }
   .palletes{
     box-shadow: $shadow;
-    margin: 2rem;
+    margin: 1rem;
     padding: .5em;
     .controls{
       margin: 1rem;
@@ -94,8 +96,14 @@ export default {
       justify-content: center;
       align-items: center;
       p{
-        width: 20%;
-        height: 3rem;
+        width: 10%;
+        height: 6rem;
+        span{
+          font-size: 1.2rem;
+				  color: $white;
+				  font-family: 'ubuntu';
+				  text-shadow: 1px 1px 1px #000, 3px 3px 5px black;
+        }
       }
     }
   }
