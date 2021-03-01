@@ -66,7 +66,10 @@ export default {
 			this.colors.push(this.hexColor);
 		},
 		removeColor(color){
-			this.colors = this.colors.filter(c => c !== color)
+			let confirm = window.confirm('You really want to delete the color ?')
+			if(confirm){
+				this.colors = this.colors.filter(c => c !== color)
+			}
 		},
 		shadeColor(color, percent) {
 			var R = parseInt(color.substring(1, 3), 16);
