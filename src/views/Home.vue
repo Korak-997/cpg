@@ -6,7 +6,7 @@
 		</div>
 		<div class="footer">
 			<div class="controls">
-				<button title="Save current pallete" class="btn" @click="savePallete">
+				<button v-show="colors.length > 0" title="Save current pallete" class="btn" @click="savePallete">
 					SAVE
 				</button>
 				<button
