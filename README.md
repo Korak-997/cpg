@@ -10,14 +10,14 @@
 
 By that every usage of the tool is totaly free.
 
-For more informations read the [license](./LICENSE)
+For more informations read the **[License](https://github.com/Korak-997/cpg/blob/master/LICENSE)**
 
 -----------------------------------------------------
 
 
 ## Contributions are always welcome :)
 
-Just read the Contribution page
+Just read the **[Contribution](https://github.com/Korak-997/cpg/blob/master/CONTRIBUTING.md)** page
 
 You found a bug ? want to make a feature suggestion ?
 
