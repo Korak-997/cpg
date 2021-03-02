@@ -45,9 +45,11 @@ export default {
           index = this.palletes.indexOf(pallete);
         }
       })
-      alert('You really want to Delete your Pallete ?')
-      this.palletes.splice(index, 1);
-      localStorage.setItem("palletes", JSON.stringify(this.palletes));
+      let confirm = window.confirm('You really want to delete the pallete ?')
+      if(confirm){
+        this.palletes.splice(index, 1);
+        localStorage.setItem("palletes", JSON.stringify(this.palletes));
+      }
     }
   }
 };

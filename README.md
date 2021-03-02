@@ -1,11 +1,29 @@
 # CPG
  **Color Pallete Generator**
  Is a Webapp for generating color palletes.
- The tool is an **opensource** app and will always be.
-
  ---------------------------
+
  It was developed using **Vuejs**
  ______________________
+
+###  The tool is an **opensource** app and will always be.
+
+By that every usage of the tool is totaly free.
+
+For more informations read the **[License](https://github.com/Korak-997/cpg/blob/master/LICENSE)**
+
+-----------------------------------------------------
+
+
+## Contributions are always welcome :)
+
+Just read the **[Contribution](https://github.com/Korak-997/cpg/blob/master/CONTRIBUTING.md)** page
+
+You found a bug ? want to make a feature suggestion ?
+
+I will be more than happy to hear from you just open and **ISSUE**
+
+----------------------------
 
 ## Project setup
 
