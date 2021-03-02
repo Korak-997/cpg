@@ -11,10 +11,10 @@ I will not put a lot of rules here :)
 
 ## Few notes to remember :
 
-* All **PRs** will be welcomed in dev branch.
+* All **PRs** will be welcomed in **[Dev Branch](https://github.com/Korak-997/cpg/tree/dev)** branch.
   The reason for that is i want to keep **Master** branch stable.
   And i will make changes myself in **beta** branch.
-  So to keep the codebase clean the **PRs** will only be accepted when they are made to **dev branch**
+  So to keep the codebase clean the **PRs** will only be accepted when they are made to **[Dev Branch](https://github.com/Korak-997/cpg/tree/dev)**
 
 * Make your commits as small as possible.
   It would be much easier to understand what are you trying to do.
